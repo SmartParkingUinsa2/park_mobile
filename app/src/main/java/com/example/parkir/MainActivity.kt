@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         val requestBody = byteArray.toRequestBody("image/jpeg".toMediaTypeOrNull())
 
         val request = Request.Builder()
-            .url(SERVER_URL)
+            .url("http://127.0.0.1:5000")
             .post(requestBody)
             .build()
 
