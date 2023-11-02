@@ -5,18 +5,22 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
-    private val serverUrl = "https://btf036br-5000.asse.devtunnels.ms/predict"
+    private val serverUrl = "https://ss2rs89r-5000.asse.devtunnels.ms/predict"
     private val REQUEST_IMAGE_CAPTURE = 1
 
     private lateinit var imageView: ImageView
@@ -25,6 +29,19 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val items = listOf("FST", "Danau", "Masjid", "FISIP", "FPK")
+
+        val autoComplete: AutoCompleteTextView = findViewById(R.id.auto_complete)
+
+        val adapter = ArrayAdapter(this, R.layout.list_item, items)
+
+        autoComplete.setAdapter(adapter)
+
+        autoComplete.onItemClickListener = AdapterView.OnItemClickListener { adapterView, view, i, l ->
+            val itemSelected = adapterView.getItemAtPosition(i)
+            Toast.makeText(this, "Item: $itemSelected", Toast.LENGTH_SHORT).show()
+        }
 
         imageView = findViewById(R.id.imageView)
 
@@ -84,8 +101,7 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
-                    }
-                    )
+                    })
                 }
             }
         }

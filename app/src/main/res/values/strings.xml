@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">parkir</string>
+    <string name="app_name">Smart Parking</string>
+    <string name="item_label">Items</string>
 </resources>
