@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         imageView = findViewById(R.id.imageView)
 
-        val takePictureButton = findViewById<Button>(R.id.takePictureButton)
+        val takePictureButton = findViewById<Button>(R.id.btn_take)
         takePictureButton.setOnClickListener {
             dispatchTakePictureIntent()
         }
